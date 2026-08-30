@@ -1,0 +1,43 @@
+# Render Blueprint — https://render.com/docs/blueprint-spec
+#
+# So benutzt du das:
+#   1. Lege dieses Backend-Verzeichnis in ein GitHub-Repo (z. B. bvm-newsletter-api).
+#   2. render.com -> New -> Blueprint -> Repo auswählen.
+#   3. Render fragt die unten mit sync:false markierten Werte ab. Eintragen:
+#        MONGO_URL          mongodb+srv://...   (MongoDB Atlas, kostenloser M0-Cluster)
+#        EMERGENT_LLM_KEY   für das KI-Editorial
+#        RESEND_API_KEY     re_...
+#        PUBLIC_BASE_URL    https://<dein-render-name>.onrender.com  (oder deine Subdomain)
+#   4. Deploy. Fertig — die URL ist dein VITE_NEWSLETTER_API / NEWSLETTER_API.
+#
+# Hinweis: Der Free-Plan schläft nach ~15 Min Inaktivität ein; der erste Aufruf
+# danach dauert ca. 30-50 Sekunden. Für den Newsletter ist das unkritisch.
+
+services:
+  - type: web
+    name: bvm-newsletter-api
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    region: frankfurt
+    healthCheckPath: /api/
+    autoDeploy: true
+    envVars:
+      - key: DB_NAME
+        value: bvm_newsletter
+      - key: CORS_ORIGINS
+        value: "https://bvm-ev.de,https://www.bvm-ev.de,https://bvmevgiessen.github.io"
+      - key: SENDER_EMAIL
+        value: newsletter@bvm-ev.de
+      - key: SENDER_NAME
+        value: BVM e.V. Gießen
+      - key: NEWSLETTER_SOURCE_BASE
+        value: https://raw.githubusercontent.com/bvmevgiessen/bvm-ev-web/main
+      - key: MONGO_URL
+        sync: false
+      - key: EMERGENT_LLM_KEY
+        sync: false
+      - key: RESEND_API_KEY
+        sync: false
+      - key: PUBLIC_BASE_URL
+        sync: false
