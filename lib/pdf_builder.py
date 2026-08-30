@@ -352,7 +352,7 @@ def _inner_canvas(canvas, doc):
     canvas.drawRightString(PAGE_W - MARGIN, PAGE_H - 11 * mm, "bvm-ev.de")
 
     canvas.setFont(_f(), 7.6)
-    canvas.drawString(MARGIN, 9 * mm, "Kontakt: info@bvm-ev.de")
+    canvas.drawString(MARGIN, 9 * mm, "Kontakt: bvmevgiessen@gmail.com")
     canvas.setFillColor(TERRACOTTA)
     canvas.setFont(_f(bold=True), 8.4)
     canvas.drawRightString(PAGE_W - MARGIN, 9 * mm, f"Seite {canvas.getPageNumber() - 1}")
@@ -370,7 +370,7 @@ def _footer_block(styles) -> Table:
     col2 = [
         Paragraph("Kontakt", styles["footer_head"]),
         Paragraph(
-            "info@bvm-ev.de<br/>bvm-ev.de<br/>Gießen, Hessen",
+            "bvmevgiessen@gmail.com<br/>bvm-ev.de<br/>Gießen, Hessen",
             styles["footer_body"],
         ),
     ]
