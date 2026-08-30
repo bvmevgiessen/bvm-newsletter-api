@@ -88,7 +88,7 @@ def _footer(unsubscribe_url: str = "") -> str:
   <p style="margin:8px 0 0 0;font-size:13px;line-height:20px;color:#cfe3d8;">
     Bund der Vereine f&uuml;r Multikulturelles Miteinander<br>
     Gie&szlig;en, Hessen &middot;
-    <a href="mailto:info@bvm-ev.de" style="color:#ffc78f;text-decoration:none;">info@bvm-ev.de</a><br>
+    <a href="mailto:bvmevgiessen@gmail.com" style="color:#ffc78f;text-decoration:none;">bvmevgiessen@gmail.com</a><br>
     <a href="https://bvm-ev.de" style="color:#ffc78f;text-decoration:none;">bvm-ev.de</a>
   </p>
   {unsub}
